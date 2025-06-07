@@ -15,8 +15,9 @@ mongoose
   .connect(process.env.MONGO_URI)
   .then(() => {
     console.log('✅ Подключение к MongoDB успешно');
-    app.listen(process.env.PORT, () =>
-      console.log(`🚀 Сервер запущен на порту ${process.env.PORT}`)
+    const PORT = process.env.PORT || 5000;
+    app.listen(PORT, () =>
+      console.log(`🚀 Сервер запущен на порту ${PORT}`)
     );
   })
   .catch((err) => {
