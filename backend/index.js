@@ -8,7 +8,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-const frontendPath = path.resolve(__dirname, '../frontend');
+const frontendPath = path.resolve(__dirname, './frontend');
 app.use(express.static(frontendPath));
 
 app.get('*', (req, res) => {
