@@ -8,12 +8,12 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// const todoRoutes = require('./routes/todos');
-// app.use('/api/todos', todoRoutes);
+const todoRoutes = require('./routes/todos');
+app.use('/api/todos', todoRoutes);
 // изменения именно тут 
 app.use(express.static(path.join(__dirname, '../frontend')));
 
-app.get('/*', (req, res) => {
+app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '../frontend', 'index.html'));
 });
 
