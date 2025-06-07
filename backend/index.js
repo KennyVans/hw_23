@@ -8,14 +8,13 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+const todoRoutes = require('./routes/todos');
+app.use('/api/todos', todoRoutes);
 // изменения именно тут 
 app.use(express.static(path.join(__dirname, 'public')));
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
-
-const todoRoutes = require('./routes/todos');
-app.use('/api/todos', todoRoutes);
 
 mongoose
   .connect(process.env.MONGO_URI)
